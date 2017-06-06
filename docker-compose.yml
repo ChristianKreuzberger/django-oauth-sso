@@ -1,0 +1,27 @@
+version: '2'
+services:
+  # Postgres Server $ docker run --name some-postgres -e POSTGRES_PASSWORD=mysecretpassword -d postgres
+
+  postgres:
+    image: postgres:9.6
+    hostname: db.sso.chkr.local
+    expose:
+      - 5432
+    ports:
+      - 127.0.128.1:5432:5432
+    environment:
+      POSTGRES_PASSWORD: database
+      POSTGRES_USER: database
+      POSTGRES_PASSWORD: database
+      POSTGRES_DB: sso
+
+  # Maildump configuration
+  maildump:
+    hostname: maildump.sso.chkr.local
+    image: ball6847/maildump
+    expose:
+      - 1025
+      - 1080
+    ports:
+      - 127.0.128.1:1080:1080
+      - 127.0.128.1:1025:1025
